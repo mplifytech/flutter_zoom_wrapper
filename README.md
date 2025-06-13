@@ -1,15 +1,25 @@
-# flutter_zoom_wrapper
+# 🔗 Flutter Zoom Wrapper
 
-Custom Zoom SDK integration
+A simple and lightweight Flutter plugin that wraps the Zoom SDK for Android and iOS using platform channels. It allows you to initialize the Zoom SDK with a JWT token and join Zoom meetings with minimal setup.
 
-## Getting Started
+> ✅ **Cross-platform:** Android & iOS  
+> 🔐 **Security Note:** Always generate JWT tokens from a **secure backend** in production.
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/to/develop-plugins),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## ✨ Features
 
+- Initialize Zoom SDK using JWT
+- Join Zoom meetings with meeting ID and password
+- Clean and minimal API
+- Built-in JWT generator for testing
+
+---
+
+## 📦 Installation
+
+Add the package to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  flutter_zoom_wrapper: ^1.0.0

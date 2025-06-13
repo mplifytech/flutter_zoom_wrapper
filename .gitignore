@@ -49,3 +49,5 @@ example/pubspec.lock  # Allow lockfile in example app
 # Web
 web/.dart_tool/
 web/build/
+android/libs/
+ios/ZoomSDK/
