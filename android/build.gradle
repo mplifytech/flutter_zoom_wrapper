@@ -1,0 +1,123 @@
+group = "com.mfy.flutter_zoom_wrapper"
+version = "1.0-SNAPSHOT"
+
+buildscript {
+    ext.kotlin_version = "2.0.20"
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        // Downgrade to a more stable Android Gradle Plugin version.
+        // Version 8.7.0 might be a pre-release or have compatibility issues.
+        classpath("com.android.tools.build:gradle:8.4.0")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+
+        // This flatDir configuration is crucial for finding local AAR files.
+        flatDir {
+            dirs project(':flutter_zoom_wrapper').file('libs')
+        }
+    }
+}
+
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
+
+android {
+    namespace = "com.mfy.flutter_zoom_wrapper"
+
+    compileSdk = 33
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled = true
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    sourceSets {
+        main.java.srcDirs += "src/main/kotlin"
+        test.java.srcDirs += "src/test/kotlin"
+    }
+
+    defaultConfig {
+        minSdk = 21 // Your minimum SDK version
+        multiDexEnabled = true // Essential for large apps/plugins like Zoom SDK
+    }
+
+    dependencies {
+        testImplementation("org.jetbrains.kotlin:kotlin-test")
+        testImplementation("org.mockito:mockito-core:5.0.0")
+    }
+
+
+    gradle.projectsEvaluated {
+        println("Checking AARs in libs folder:")
+        fileTree(dir: 'libs', include: ['*.aar']).files.each { println(it.name) }
+    }
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+
+            testLogging {
+                events "passed", "skipped", "failed", "standardOut", "standardError"
+                outputs.upToDateWhen {false}
+                showStandardStreams = true
+            }
+        }
+    }
+
+    dependencies {
+        coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
+        // Local AAR for Zoom SDK. Ensure 'mobilertc.aar' is in the 'libs' directory of your plugin.
+        api(name: 'mobilertc', ext: 'aar')
+        //implementation("androidx.multidex:multidex:2.0.1")
+        implementation 'androidx.appcompat:appcompat:1.6.1'
+        implementation 'com.google.android.material:material:1.9.0'
+        implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+        implementation 'androidx.core:core-splashscreen:1.0.1'
+        // ExoPlayer (for Zoom SDK media)
+        implementation 'com.google.android.exoplayer:exoplayer-core:2.18.7'
+        implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.7'
+        implementation 'com.google.android.exoplayer:exoplayer:2.18.7'
+        implementation 'com.airbnb.android:lottie:5.2.0'
+        implementation 'com.google.crypto.tink:tink-android:1.6.1'
+        implementation 'com.github.bumptech.glide:glide:4.12.0'
+        annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+        implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
+        implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+        implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0'
+        implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.7.0"
+        implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
+        implementation 'androidx.webkit:webkit:1.6.1'
+
+        implementation 'androidx.fragment:fragment:1.5.7'
+        implementation 'androidx.lifecycle:lifecycle-viewmodel:2.6.1'
+        implementation 'androidx.lifecycle:lifecycle-livedata:2.6.1'
+        implementation 'androidx.databinding:viewbinding:8.0.0'
+        implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+        implementation 'io.reactivex.rxjava3:rxjava:3.1.8'
+        // Optional - If you're using navigation
+        implementation "androidx.navigation:navigation-fragment-ktx:2.7.7"
+        implementation "androidx.navigation:navigation-ui-ktx:2.7.7"
+
+    }
+}
