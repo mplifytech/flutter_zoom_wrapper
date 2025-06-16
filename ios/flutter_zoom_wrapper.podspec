@@ -14,9 +14,9 @@ Pod::Spec.new do |s|
   s.public_header_files = 'Classes/**/*.h'
 
   s.ios.vendored_frameworks = 'ZoomSDK/MobileRTC.xcframework'
-  s.resource_bundles = {
-    'MobileRTCResources' => ['ZoomSDK/MobileRTCResources.bundle/**/*']
-  }
+   s.resource_bundles = {
+      'MobileRTCResources' => ['ZoomSDK/MobileRTCResources.bundle']
+    }
 
   s.frameworks = 'UIKit', 'Foundation', 'AVFoundation', 'CoreGraphics', 'SystemConfiguration', 'MobileCoreServices', 'Security'
   s.libraries = 'z', 'c++'

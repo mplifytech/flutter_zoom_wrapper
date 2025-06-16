@@ -2,9 +2,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        flatDir {
-            dirs(project(":flutter_zoom_wrapper").projectDir.resolve("libs"))
-        }
     }
 }
 

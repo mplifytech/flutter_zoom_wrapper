@@ -11,12 +11,12 @@ android {
 
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
 
@@ -52,11 +52,6 @@ flutter {
 }
 
 dependencies {
-    implementation(mapOf("name" to "mobilertc", "ext" to "aar"))
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
-    implementation("com.google.crypto.tink:tink-android:1.6.1")
-    implementation("com.github.bumptech.glide:glide:4.12.0")
 }
 
