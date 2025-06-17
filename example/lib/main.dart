@@ -31,8 +31,11 @@ class _ZoomHomePageState extends State<ZoomHomePage> {
   final TextEditingController _sdkKeyController = TextEditingController();
   final TextEditingController _sdkSecretController = TextEditingController();
   final TextEditingController _meetingIdController = TextEditingController();
-  final TextEditingController _meetingPasswordController = TextEditingController();
-  final TextEditingController _displayNameController = TextEditingController(text: 'Guest User');
+  final TextEditingController _meetingPasswordController =
+      TextEditingController();
+  final TextEditingController _displayNameController = TextEditingController(
+    text: 'Guest User',
+  );
 
   String _logOutput = '';
 
@@ -134,10 +137,7 @@ class _ZoomHomePageState extends State<ZoomHomePage> {
             ),
 
             const SizedBox(height: 30),
-            const Text(
-              'Logs',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+            const Text('Logs', style: TextStyle(fontWeight: FontWeight.bold)),
             Container(
               height: 150,
               padding: const EdgeInsets.all(8),

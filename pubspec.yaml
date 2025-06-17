@@ -1,7 +1,8 @@
 name: flutter_zoom_wrapper
-description: "Custom Zoom SDK integration"
-version: 0.0.1
-homepage: https://github.com/mplifytech/flutter_zoom_wrapper
+description: "A lightweight Flutter plugin that wraps the Zoom SDK for Android and iOS. Easily initialize Zoom and join meetings with a clean Dart API."
+version: 0.0.2
+homepage: https://github.com/yourusername/flutter_zoom_wrapper
+license: BSD-3-Clause
 
 environment:
   sdk: ^3.7.0
