@@ -9,3 +9,4 @@
 - Formatted code with `dart format .`.
 
 ## [0.0.3] - Fix pub.dev metadata and updated README
+## [0.0.4] - Updated README
