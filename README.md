@@ -2,6 +2,9 @@
 
 A simple and lightweight Flutter plugin that wraps the Zoom SDK for Android and iOS using platform channels. It allows you to initialize the Zoom SDK with a JWT token and join Zoom meetings with minimal setup.
 
+📖 Read the blog post: [Zoom SDK Flutter Integration Guide](https://mplifytech.com/blog-details/flutter-zoom-wrapper-wrap-it-seamless)
+
+
 > ✅ **Cross-platform:** Android & iOS  
 > 🔐 **Security Note:** Always generate JWT tokens from a **secure backend** in production.
 
@@ -22,7 +25,7 @@ Add the package to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_zoom_wrapper: ^1.0.0
+  flutter_zoom_wrapper: ^0.0.3
   
 ---  
 
@@ -33,14 +36,15 @@ You must **download and configure them manually** for Android and iOS.
 
 ---
 
-### ✅ Step 1: [Download Zoom SDKs](https://marketplace.zoom.us/docs/sdk/native-sdks/)
+### ✅ Step 1: [Download Zoom SDKs](https://marketplace.zoom.us/)
 
-Download the SDKs directly from the official Zoom Marketplace:
+Create general app on zoom marketplace and from Embed section download below sdk versions or latest available compatible versions.
 
-**Required SDK Versions:**
+Currently used below versions:
+** Android SDK: v6.3.1.26548
+** iOS SDK: v6.4.10.25465
 
-- **Android SDK:** `v6.3.1.26548`  
-- **iOS SDK:** `v6.4.10.25465`
+SDK Key and SDK Secret will be on the marketplace.
 
 ---
 
@@ -49,11 +53,18 @@ Download the SDKs directly from the official Zoom Marketplace:
 1. Extract the downloaded **Android SDK ZIP**.
 2. Locate the file: `mobilertc.aar`.
 3. Copy it to the following path:
+~/.pub-cache/hosted/pub.dev/flutter_zoom_wrapper-{current_version}/android
 
-.flutter-zoom-wrapper/
+
+.flutter_zoom_wrapper/
 └── android/
 └── libs/
 └── mobilertc.aar
+
+4. Add required permissions in AndroidManifest.xml:
+   <uses-permission android:name="android.permission.INTERNET"/>
+   <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
 
 
 ---
@@ -65,16 +76,15 @@ Download the SDKs directly from the official Zoom Marketplace:
    - `MobileRTC.xcframework`
    - `MobileRTCResources.bundle`
 3. Create a `ZoomSDK` folder inside:
-
-.flutter-zoom-wrapper/
-└── ios/
-
+~/.pub-cache/hosted/pub.dev/flutter_zoom_wrapper-{version/ios
 
 4. Copy both files into this path:
-
-.flutter-zoom-wrapper/
+.flutter_zoom_wrapper/
 └── ios/
-└── ZoomSDK/
+    └── ZoomSDK/
+            └── - `MobileRTC.xcframework`
+                - `MobileRTCResources.bundle`
+
 
 
 5. Then also copy `MobileRTCResources.bundle` into your main app’s Runner project:
@@ -82,6 +92,12 @@ Download the SDKs directly from the official Zoom Marketplace:
 ios/
 └── Runner/
 └── MobileRTCResources.bundle
+
+6.Add required permissions in Info.plist of your project:
+    key>NSCameraUsageDescription</key>
+    <string>This app uses your camera for Zoom meetings</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>This app uses your mic for Zoom meetings</string>
 
 
 ---
@@ -95,4 +111,16 @@ flutter pub get
 cd ios
 pod install
 
+## For full implementation refer example or blog given above.
 
+## 🎥 Demo
+
+Here's a quick demo of joining a Zoom meeting using flutter_zoom_wrapper:
+
+![Zoom Join Demo](media/zoom_example.gif)
+
+
+If you find it useful:
+🌟 Star the project on GitHub 
+🗣 Share feedback or feature requests
+📩 Contact us for any queries at : contact@mplifytech.com

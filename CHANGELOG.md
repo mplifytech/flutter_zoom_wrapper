@@ -7,3 +7,5 @@
 - Added full DartDoc comments for public API elements.
 - Cleaned up unused platform interface files.
 - Formatted code with `dart format .`.
+
+## [0.0.3] - Fix pub.dev metadata and updated README
