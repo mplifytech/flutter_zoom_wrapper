@@ -15,14 +15,11 @@ A simple and lightweight Flutter plugin that wraps the Zoom SDK for Android and 
 
 
 ---
-
-## ✨ Features
-
 🎥 Demo
 Here's a quick demo of joining a Zoom meeting using flutter_zoom_wrapper:
-
 <img src="assets/zoom_example.gif" alt="Zoom Join Demo" />
 
+## ✨ Features
 - Initialize Zoom SDK using JWT
 - Join Zoom meetings with meeting ID and password
 - Clean and minimal API
